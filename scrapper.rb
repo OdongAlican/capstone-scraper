@@ -24,26 +24,29 @@ class Scraper
   end
 end
 
-class Loop
+class Loop < Scraper
   attr_reader :total, :page
   def initialize(total, page)
     @total = total
     @page = page
   end
 
-  # private
-
-  def scraper
-    houses = []
-    while @page <= @total
-      pagination_url = "https://sfbay.craigslist.org/search/hhh?s=#{@page}"
+  def run
+    pagination_url = "https://sfbay.craigslist.org/search/hhh?s=#{@page}"
       puts pagination_url
-      puts "Page: #{@page}"
+      puts "Page Number: #{@page}"
       puts ''
       document = ::OpenURI.open_uri(pagination_url)
       content = document.read
       pagination_parsed_page = Nokogiri::HTML(content)
-      pagination_housing_list = pagination_parsed_page.css('li.result-row')
+      pagination_parsed_page.css('li.result-row')
+  end
+
+  def scraper
+    houses = []
+    while @page <= @total
+
+      pagination_housing_list = run
 
       pagination_housing_list.each do |housing|
         house = {

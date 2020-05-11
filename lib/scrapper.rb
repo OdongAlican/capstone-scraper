@@ -14,6 +14,8 @@ class Scraper
     page_number(parsed_page, housing_list)
   end
 
+  private
+
   def page_number(parsed_page, housing_list)
     page = 0
     per_page = housing_list.count

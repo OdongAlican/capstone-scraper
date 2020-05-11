@@ -33,13 +33,13 @@ class Loop < Scraper
 
   def run
     pagination_url = "https://sfbay.craigslist.org/search/hhh?s=#{@page}"
-      puts pagination_url
-      puts "Page Number: #{@page}"
-      puts ''
-      document = ::OpenURI.open_uri(pagination_url)
-      content = document.read
-      pagination_parsed_page = Nokogiri::HTML(content)
-      pagination_parsed_page.css('li.result-row')
+    puts pagination_url
+    puts "Page Number: #{@page}"
+    puts ''
+    document = ::OpenURI.open_uri(pagination_url)
+    content = document.read
+    pagination_parsed_page = Nokogiri::HTML(content)
+    pagination_parsed_page.css('li.result-row')
   end
 
   def scraper
@@ -56,7 +56,7 @@ class Loop < Scraper
           date: housing.css('time.result-date').text
         }
         houses << house
-        puts "Added #{house[:title]}"
+        puts "Added #{house[:title]}" 
         puts ''
       end
       @page += 120

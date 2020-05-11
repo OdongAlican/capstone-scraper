@@ -56,7 +56,7 @@ class Loop < Scraper
           date: housing.css('time.result-date').text
         }
         houses << house
-        puts "Added #{house[:title]}" 
+        puts "Added #{house[:title]}"
         puts ''
       end
       @page += 120

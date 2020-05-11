@@ -5,8 +5,13 @@ require 'byebug'
 require 'open-uri'
 
 class Scraper
+  attr_reader :link
+  def initialize(link)
+    @link = link
+  end
+
   def run
-    url = 'https://sfbay.craigslist.org/search/hhh?s=0'
+    url = @link
     document = ::OpenURI.open_uri(url)
     content = document.read
     parsed_page = Nokogiri::HTML(content)
@@ -16,7 +21,7 @@ class Scraper
 
   private
 
-  def page_number(parsed_page, housing_list)
+  def page_number(parsed_page = nil, housing_list = nil)
     page = 0
     per_page = housing_list.count
     total = parsed_page.css('span.totalcount')[0].text.to_i
@@ -67,6 +72,3 @@ class Loop < Scraper
     byebug
   end
 end
-
-sample = Scraper.new
-sample.run

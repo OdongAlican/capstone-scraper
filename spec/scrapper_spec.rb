@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require_relative '../lib/scrapper.rb'
 
 describe 'Scraper' do
@@ -44,10 +42,10 @@ describe 'Scraper' do
   describe '#scraper' do
     it 'checks the various pages of the website and returns the list of houses' do
       houses = [{
-        title: "4 Bed-Room House",
-        price: "$4000",
-        url: "https://example.com",
-        date: "23-04-2020"
+        title: '4 Bed-Room House',
+        price: '$4000',
+        url: 'https://example.com',
+        date: '23-04-2020'
       }]
       allow(value).to receive(:scraper).and_return(houses)
       expect(value.scraper).to eql(houses)
@@ -55,10 +53,10 @@ describe 'Scraper' do
 
     it 'checks the various pages of the website and does not returns true' do
       houses = [{
-        title: "4 Bed-Room House",
-        price: "$4000",
-        url: "https://example.com",
-        date: "23-04-2020"
+        title: '4 Bed-Room House',
+        price: '$4000',
+        url: 'https://example.com',
+        date: '23-04-2020'
       }]
       allow(value).to receive(:scraper).and_return(houses)
       expect(value.scraper).not_to eql(true)
@@ -66,10 +64,10 @@ describe 'Scraper' do
 
     it 'checks the various pages of the website and does not returns false' do
       houses = [{
-        title: "4 Bed-Room House",
-        price: "$4000",
-        url: "https://example.com",
-        date: "23-04-2020"
+        title: '4 Bed-Room House',
+        price: '$4000',
+        url: 'https://example.com',
+        date: '23-04-2020'
       }]
       allow(value).to receive(:scraper).and_return(houses)
       expect(value.scraper).not_to eql(false)

@@ -25,9 +25,9 @@ class Scraper
     page = 0
     per_page = housing_list.count
     total = parsed_page.css('span.totalcount')[0].text.to_i
+    last_page = (total.to_f / per_page).round
     sample = Loop.new(total, page)
     sample.scraper
-    last_page = (total.to_f / per_page).round
   end
 end
 

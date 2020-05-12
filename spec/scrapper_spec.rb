@@ -4,15 +4,15 @@ require_relative '../lib/scrapper.rb'
 
 describe 'Scraper' do
   let(:scraper) { Scraper.new('https://example.com') }
-  let(:loop) { Loop.new(200, 1) }
+  let(:value) { Loop.new(200, 1) }
 
   describe '#run' do
-    it 'calls the run method with a true value' do
+    it 'calls the run method in Scraper class with a true value' do
       allow(scraper).to receive(:run).and_return(true)
       expect(scraper.run).to eql(true)
     end
 
-    it 'calls the run method with a false value' do
+    it 'calls the run method in Scraper class with a false value' do
       allow(scraper).to receive(:run).and_return(true)
       expect(scraper.run).not_to eql(false)
     end
@@ -28,4 +28,16 @@ describe 'Scraper' do
       expect(scraper.page_number).not_to eql(false)
     end
   end
+
+  describe '#run' do
+  it 'calls the run method in Loop class with a true value' do
+    allow(value).to receive(:run).and_return(true)
+    expect(value.run).to eql(true)
+  end
+
+  it 'calls the run method in Loop class with a false value' do
+    allow(value).to receive(:run).and_return(true)
+    expect(value.run).not_to eql(false)
+  end
+end
 end

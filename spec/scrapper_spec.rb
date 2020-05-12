@@ -5,18 +5,17 @@ require_relative '../lib/scrapper.rb'
 describe 'Scraper' do
   let(:scraper) { Scraper.new('https://example.com') }
   let(:loop) { Loop.new(200, 1) }
+  
   describe '#run' do
-    it 'calls the page_number method passing arguments' do
-      expect(scraper.run).to recieve(last_page)
+    it 'calls the run method with a true value' do
+      allow(scraper).to receive(:run).and_return(true)
+      expect(scraper.run).to eql(true)
+    end
+
+    it 'calls the run method with a false value' do
+      allow(scraper).to receive(:run).and_return(true)
+      expect(scraper.run).not_to eql(false)
     end
   end
 end
 
-# describe Calculator do
-#     describe "#add" do
-#       it "returns the sum of two numbers" do
-#         calculator = Calculator.new
-#         expect(calculator.add(5, 2)).to eql(7)
-#       end
-#     end
-#   end
